@@ -1,27 +1,31 @@
-{
-  "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "ES2022",
-    "useDefineForClassFields": true,
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+{ // Archivo de configuracion TypeScript para código de la app (frontend)
+  "compilerOptions": { // Opciones del compilador TS
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo", // Donde guarda info incremental de compilación
+    "target": "ES2022", // Version JS emitida (features compiladas hasta ES2022)
+    "useDefineForClassFields": true, // Usa semántica de class fields moderna (define) en vez de asignaciones en constructor
+    "lib": ["ES2022", "DOM", "DOM.Iterable"], // Librerías de tipos incluidas (APIs de ES2022, navegador y estructuras iterables DOM)
+    "module": "ESNext", // Genera modules ES nativos (import/export sin transpilar)
+    "skipLibCheck": true, // Omite chequear archivos .d.ts para acelerar compilación
+    "baseUrl": "./", // Base para resolver paths relativos y alias
+    "paths": { // Mapeo de alias de importaciones
+      "@/*": ["src/*"] // "@/" apunta a carpeta src (ej: '@/App')
+    },
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
-    "jsx": "react-jsx",
+    "moduleResolution": "bundler", // Estrategia de resolución optimizada para bundlers (Vite/ESBuild)
+    "allowImportingTsExtensions": true, // Permite importar usando extensión .ts/.tsx explícita
+    "verbatimModuleSyntax": true, // Preserva import/export exactos (no elimina export {} vacíos)
+    "moduleDetection": "force", // Fuerza tratar todos los archivos como módulos (require import/export)
+    "noEmit": true, // No genera archivos .js (lo hace Vite)
+    "jsx": "react-jsx", // Transforma JSX usando runtime nuevo de React 17+ (sin importar React explícito)
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    /* Linting / Calidad */
+    "strict": true, // Activa modo estricto total (mejoras de tipos)
+    "noUnusedLocals": true, // Error si hay variables locales sin usar
+    "noUnusedParameters": true, // Error si parámetros de función no se usan
+    "erasableSyntaxOnly": true, // Solo incluye tipos que no afectan runtime (optimiza)
+    "noFallthroughCasesInSwitch": true, // Advierte si un case cae a otro sin break
+    "noUncheckedSideEffectImports": true // Marca imports que solo causan efectos secundarios sin usar exports
   },
-  "include": ["src"]
+  "include": ["src"] // Archivos a incluir en el proyecto
 }

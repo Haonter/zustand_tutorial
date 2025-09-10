@@ -1,25 +1,29 @@
-{
-  "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2023",
-    "lib": ["ES2023"],
-    "module": "ESNext",
-    "skipLibCheck": true,
+{ // Configuración TS para scripts de Node/Vite (config build)
+  "compilerOptions": { // Opciones del compilador
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo", // Cache incremental para esta referencia
+    "target": "ES2023", // Emit compatibilidad hasta ES2023 (más moderno que app)
+    "lib": ["ES2023"], // Solo librería estándar ES (no DOM)
+    "module": "ESNext", // Usa sintaxis de módulos ES
+    "skipLibCheck": true, // Omite chequeo de .d.ts
+    "baseUrl": "./", // Base para paths
+    "paths": { // Alias compartido
+      "@/*": ["src/*"] // Permite usar '@/' también en scripts (si acceden a código src)
+    },
 
     /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
-    "noEmit": true,
+    "moduleResolution": "bundler", // Resolución moderna para dependencias ESM
+    "allowImportingTsExtensions": true, // Permite imports con extensión .ts explícita
+    "verbatimModuleSyntax": true, // No altera syntax import/export
+    "moduleDetection": "force", // Trata todos los archivos como módulos
+    "noEmit": true, // No genera salida (solo tipos)
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    /* Linting / Calidad */
+    "strict": true, // Modo estricto
+    "noUnusedLocals": true, // Error variables locales sin uso
+    "noUnusedParameters": true, // Error parámetros sin uso
+    "erasableSyntaxOnly": true, // Elimina tipos sin efecto runtime
+    "noFallthroughCasesInSwitch": true, // Evita fallthrough accidental
+    "noUncheckedSideEffectImports": true // Marca imports solo efectos secundarios
   },
-  "include": ["vite.config.ts"]
+  "include": ["vite.config.ts"] // Solo incluye archivo de configuración Vite
 }

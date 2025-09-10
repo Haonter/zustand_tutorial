@@ -1,7 +1,7 @@
-{
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
+{ // Proyecto raíz TS usando Project References
+  "files": [], // Sin archivos directos, todo via referencias
+  "references": [ // Referencias a sub-configs para compilar incrementalmente
+    { "path": "./tsconfig.app.json" }, // Config de la aplicación (código React)
+    { "path": "./tsconfig.node.json" } // Config de entorno Node (Vite/config)
   ]
 }

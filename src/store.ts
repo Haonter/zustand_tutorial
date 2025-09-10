@@ -15,7 +15,7 @@
  *   La reactividad significa que los componentes se actualizan automáticamente cuando el estado cambia, y Zustand optimiza para que solo los componentes afectados se rendericen.
  * - No requiere boilerplate (código repetitivo) ni reducers (funciones para manejar cambios de estado) como Redux, lo que facilita su uso y mantenimiento.
  *   Boilerplate es código repetitivo y necesario en otras librerías como Redux; los reducers son funciones para manejar cambios de estado. Zustand elimina la necesidad de ambos, simplificando la gestión de estado.
- *   
+ *
  *   Por ejemplo, imagina que el "store" de Zustand es como una biblioteca:
  *   Los libros representan el estado global (los datos que pueden cambiar) y los lectores (componentes) pueden entrar a la biblioteca y consultar los libros que les interesan (acceder al estado).
  *   Si un libro se actualiza o se publica uno nuevo (cambio de estado), solo los lectores que están interesados en ese libro se enteran y pueden volver a consultarlo (los componentes se actualizan automáticamente).
@@ -31,7 +31,7 @@
  *  - Zustand: Librería para manejar el estado en aplicaciones de React.
  *  - Store: Contenedor centralizado de estado y lógica de negocio.
  *  - Estado: Información que puede cambiar en la aplicación.
- *  - Un Hook es una función especial en React que permite a los componentes usar funcionalidades como el estado (useState) y el ciclo de vida (useEffect), 
+ *  - Un Hook es una función especial en React que permite a los componentes usar funcionalidades como el estado (useState) y el ciclo de vida (useEffect),
  *    que antes solo estaban disponibles en componentes de clase.
  *  - Hook Personalizado (Custom Hook): Es una función que empieza con el prefijo "use" y usa otros Hooks. Su objetivo es reutilizar lógica entre componentes, encapsulando código complejo.
  *  - Prop Drilling: Es una técnica que consiste en pasar propiedades (props/params) a través de múltiples niveles de componentes, desde un componente padre hacia sus componentes hijos,
@@ -41,45 +41,53 @@
  *  - Reducers: Funciones que permiten manejar cambios de estado de manera predecible en Redux.
  */
 
-import { create } from 'zustand'
+import { create } from 'zustand';
 
-interface BearState {
-  bears: number
-  increasePopulation: () => void
-  increasePopulationInAmount: (amount: number) => void
-  removeAllBears: () => void
-  updateBears: (newBears: number) => void
+interface ContadorState {
+  contador: number
+  incrementarContador: () => void
+  incrementarContadorEnCantidad: (amount: number) => void
+  duplicarContador: () => void
+  dividirContador: () => void
+  eliminarTodosLosContadores: () => void
+  actualizarContador: (nuevoValor: number) => void
 }
 
 /**
  * @file store.ts
- * @hook useMyBearStore
- * @description Store de Zustand para gestionar el estado de la población de osos.
- * @param {BearState} state - El objeto de estado que contiene la población de osos y las acciones.
+ * @hook useMycontadorStore
+ * @description Store de Zustand para gestionar el estado del contador y las acciones relacionadas.
+ * @param {ContadorState} state - El objeto de estado que contiene el contador y las acciones.
  * @param {Function} set - La función para actualizar el estado.
- * @param {number} state.bears - El número actual de osos.
- * @param {Function} state.increasePopulation - Función para aumentar la población de osos en 1.
- * @param {Function} state.increasePopulationInAmount - Función para aumentar la población de osos en una cantidad específica.
- * @param {Function} state.removeAllBears - Función para eliminar todos los osos.
- * @param {Function} state.updateBears - Función para actualizar el número de osos.
+ * @param {number} state.contador - El número actual del contador
+ * @param {Function} state.incrementarContador - Función para aumentar el contador en 1.
+ * @param {Function} state.incrementarContadorEnCantidad - Función para aumentar el contador en una cantidad específica.
+ * @param {Function} state.duplicarContador - Función para duplicar el contador.
+ * @param {Function} state.dividirContador - Función para dividir el contador a la mitad.
+ * @param {Function} state.eliminarTodosLosContadores - Función para eliminar todos los contadores.
+ * @param {Function} state.actualizarContador - Función para actualizar el número del contador.
  * @example
  *
  *  // Uso básico
- *  const bears = useMyBearStore((state) => state.bears);
- *  const increasePopulation = useMyBearStore((state) => state.increasePopulation);
- *  const increasePopulationInAmount = useMyBearStore((state) => state.increasePopulationInAmount);
- *  const removeAllBears = useMyBearStore((state) => state.removeAllBears);
- *  const updateBears = useMyBearStore((state) => state.updateBears);
+ *  const contador = useMyCounterStore((state) => state.contador);
+ *  const increaseContador = useMyCounterStore((state) => state.increaseContador);
+ *  const incrementarContadorEnCantidad = useMyCounterStore((state) => state.incrementarContadorEnCantidad);
+ *  const duplicarContador = useMyCounterStore((state) => state.duplicarContador);
+ *  const dividirContador = useMyCounterStore((state) => state.dividirContador);
  */
-const useMyBearStore = create<BearState>((set) => ({
+const useMyCounterStore = create<ContadorState>((set) => ({
+  // PD: Crea un hook con ☝🏻😎 create, y especificar la interfaz, Ej. create<InterfazDeseada>
+
   // Estado inicial
-  bears: 0,
+  contador: 0,
 
-  // Acciones / Setters
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  increasePopulationInAmount: (amount) => set((state) => ({ bears: state.bears + amount })),
-  removeAllBears: () => set({ bears: 0 }),
-  updateBears: (newBears) => set({ bears: newBears }),
-}))
+  // Acciones o Setters
+  incrementarContador: () => set((state) => ({ contador: state.contador + 1 })),
+  incrementarContadorEnCantidad: (amount) => set((state) => ({ contador: state.contador + amount })),
+  duplicarContador: () => set((state) => ({ contador: state.contador * 2 })),
+  dividirContador: () => set((state) => ({ contador: Math.floor(state.contador / 2) })),
+  eliminarTodosLosContadores: () => set({ contador: 0 }),
+  actualizarContador: (nuevoValor) => set({ contador: nuevoValor }),
+}));
 
-export default useMyBearStore;
+export default useMyCounterStore;
