@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite'; // Plugin TailwindCSS para Vite
 
 // https://vite.dev/config/
 export default defineConfig({ // Exporta configuración Vite
-  base: '/', // Prefijo de rutas al servir/build (http://localhost:5173/)
+  base: './', // Prefijo de rutas al servir/build (http://localhost:5173/)
   plugins: [react(), tailwindcss()], // Array de plugins activos (React fast refresh + JSX + TailwindCSS)
   resolve: { // Opciones de resolución de módulos
     alias: { // Alias personalizados
