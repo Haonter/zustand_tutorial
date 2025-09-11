@@ -6,12 +6,11 @@ import tailwindcss from '@tailwindcss/vite'; // Plugin TailwindCSS para Vite
 export default defineConfig({
   /*
    * Nota sobre la base de la aplicación:
-   * - En ejecución local para desarrollo se pasa `--base /zustand_tutorial/` desde los scripts
-   *   (`start` y `dev`) para que el servidor dev emule la ruta de GitHub Pages.
-   * - Para la build de producción el script `build` invoca Vite con base relativa (`./`),
-   *   de forma que los assets en `dist` referencien rutas relativas y el paquete sea portable.
-   * - Aquí en la configuración se ha dejado `base: './'` para favorecer builds portables; los
-   *   flags `--base` en los scripts de npm tienen prioridad en tiempo de ejecución cuando se usan.
+   * - En desarrollo se pasa `--base /zustand_tutorial/` desde los scripts (`start` y `dev`) para que el servidor dev emule la ruta de GitHub Pages.
+   * - Para la build el script invoca Vite con base relativa (`./`), de forma que los assets en `dist` referencien rutas relativas y el paquete sea portable.
+   * - Aquí en la configuración se ha dejado `base: './'` para favorecer builds portables.
+   *
+   * Los flags `--base` en los scripts de npm tienen prioridad en tiempo de ejecución cuando se usan.
    */
   base: './',
   plugins: [react(), tailwindcss()], // Array de plugins activos (React fast refresh + JSX + TailwindCSS)
