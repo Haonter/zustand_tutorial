@@ -1,15 +1,22 @@
 {
   "name": "zustand_practice",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": "Diego A. Rodríguez",
+  "description": "A simple project to practice Zustand state management library with React and TypeScript.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Haonter/zustand_tutorial"
+  },
   "scripts": {
-    "start": "vite --base /zustand_tutorial/",
-    "dev": "vite --base /zustand_tutorial/ --host",
+    "start": "vite --base /zustand_tutorial/ --port 5000",
+    "dev": "vite --base /zustand_tutorial/ --port 5001 --host",
     "build": "tsc -b && vite build --base ./",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview --base /zustand_tutorial/"
+    "preview": "vite preview --port 3000"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
