@@ -39,6 +39,20 @@
  *  - Redux: Librería para manejar el estado en aplicaciones de React, más compleja y con más boilerplate.
  *  - Boilerplate: Código repetitivo y necesario.
  *  - Reducers: Funciones que permiten manejar cambios de estado de manera predecible en Redux.
+ *
+ *
+ * Comparativa entre Redux, React State + Context y Zustand:
+ *  +-----------------------+--------------------------------------------+--------------------------------------------------+-------------------------------------------------+----------------------+----------------+---------------------------------------------------------------+
+ *  | Biblioteca / Patrón   | Características                            | Diferencias                                      | Ventajas                                        | Curva de aprendizaje | Demanda laboral| Casos de uso                                                  |
+ *  +-----------------------+--------------------------------------------+--------------------------------------------------+-------------------------------------------------+----------------------+----------------+---------------------------------------------------------------+
+ *  | Redux                 | Estado global predecible;                  | Arquitectura Flux;                               | Mantenimiento en apps grandes;                  | ★★☆☆☆ (2/5)        | ★★★★★ (5/5)  | Apps grandes con lógica compleja, aplicaciones empresariales. |
+ *  +-----------------------+--------------------------------------------+--------------------------------------------------+-------------------------------------------------+----------------------+----------------+---------------------------------------------------------------+
+ *  | React State + Context | Estado local (`useState` / `useReducer`);  | Integrado en React; sin middleware por defecto;  | Muy simple para casos pequeños/medios;          | ★★★★★ (5/5)        | ★★★★☆ (3/5)  | Apps pequeñas o medianas, prototipos, componentes aislados,   |
+ *  |                       | `Context` para compartir datos.            | no requiere normalización.                       | sin dependencias; directo.                      |                      |                | compartir temas o autenticación.                              |
+ *  +-----------------------+--------------------------------------------+--------------------------------------------------+-------------------------------------------------+----------------------+----------------+---------------------------------------------------------------+
+ *  | Zustand               | Tienda global minimalista; API simple;     | Menos ceremonioso que Redux;                     | Muy ligero; fácil de adoptar; poco boilerplate; | ★★★★☆ (4/5)        | ★★★☆☆ (4/5)  | Apps medianas a grandes, proyectos que buscan simplicidad,    |
+ *  |                       | mutaciones directas; soporta middlewares.  | API más compacta; menos boilerplate.             | buen rendimiento.                               |                      |                | migraciones desde Redux, apps con necesidades de rendimiento. |
+ *  +-----------------------+--------------------------------------------+--------------------------------------------------+-------------------------------------------------+----------------------+----------------+---------------------------------------------------------------+
  */
 
 import { create } from 'zustand';
