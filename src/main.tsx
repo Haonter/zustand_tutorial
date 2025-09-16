@@ -17,9 +17,8 @@ import { AppRoutes } from '@/routes';
     "start": "vite --base /zustand_tutorial/ --port 5000",
     "dev": "vite --base /zustand_tutorial/ --port 5001 --host",
     "build": "tsc -b && vite build --base ./",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "preview": "vite preview --port 3000"
+    "preview": "vite preview --port 3000",
+    ...
   }
 
   De manera que en el script start se ha configurado el parametro --base /zustand_tutorial/ --port 5000

@@ -17,7 +17,11 @@ const styles = {
   },
   input: `w-[250px] border border-gray-300 p-2 rounded-xl focus:outline-none focus:border-2 
     focus:border-blue-500 focus:shadow-md transition-all duration-200 text-white`,
-  homeContenedorBotones: 'grid grid-cols-2 gap-2'
+  homeContenedorBotones: 'grid grid-cols-2 gap-2',
+  advanced: {
+    contentContainer: 'grid grid-cols-3 gap-4 w-full h-full',
+    aside: 'col-span-1 flex flex-col gap-4',
+  }
 };
 
 export default styles;

@@ -14,9 +14,12 @@
     "start": "vite --base /zustand_tutorial/ --port 5000",
     "dev": "vite --base /zustand_tutorial/ --port 5001 --host",
     "build": "tsc -b && vite build --base ./",
+    "preview": "vite preview --port 3000",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "preview": "vite preview --port 3000"
+    "dependencies:update": "npx npm-check-updates -u && npm install",
+    "dependencies:list": "mkdir .\\src\\reports 2>nul & npm list --json > .\\src\\reports\\dependencies.json",
+    "audit:json": "mkdir .\\src\\reports 2>nul & npm audit --json > .\\src\\reports\\npm-audit.json"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
