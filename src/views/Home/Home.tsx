@@ -2,7 +2,8 @@ import React, { useRef } from 'react';
 import Boton from '@/components/Boton/Boton';
 import Input from '@/components/Input/Input';
 import styles from '@/styles/styles';
-import useMyCounterStore from '@/store';
+import useMyCounterStore from '@/stores/store';
+import Navbar from '@/components/Navbar/Navbar';
 
 const Home: React.FC = () => {
 
@@ -39,16 +40,20 @@ const Home: React.FC = () => {
 
   return (
     <main className={styles.main}>
-      <h1 className={styles.header}>Cuenta: {contadores}</h1>
-      <Boton tipo='agregar' contenido='Agregar 1' accion={incrementarContador} />
+      <Navbar />
 
-      <Input tipo="number" name="cantidad" id="cantidad" ref={cantidadRef} />
-      <div className={styles.contenedorBotones}>
-        <Boton tipo='agregar' contenido='Agregar cantidad' accion={customIncreasePopulation} />
-        <Boton tipo='dividir' contenido='Dividir' accion={dividirContador} />
-        <Boton tipo='doble' contenido='Duplicar' accion={duplicarContador} />
-        <Boton tipo='eliminar' contenido='Eliminar todos' accion={eliminarTodosLosContadores} />
-      </div>
+      <section className={styles.contentContainer}>
+        <h1 className={styles.header}>Cuenta: {contadores}</h1>
+        <Boton tipo='agregar' contenido='Agregar 1' accion={incrementarContador} />
+        <Input tipo="number" name="cantidad" id="cantidad" ref={cantidadRef} />
+
+        <div className={styles.homeContenedorBotones}>
+          <Boton tipo='agregar' contenido='Agregar cantidad' accion={customIncreasePopulation} />
+          <Boton tipo='dividir' contenido='Dividir' accion={dividirContador} />
+          <Boton tipo='doble' contenido='Duplicar' accion={duplicarContador} />
+          <Boton tipo='eliminar' contenido='Eliminar todos' accion={eliminarTodosLosContadores} />
+        </div>
+      </section>
     </main>
   );
 };

@@ -1,7 +1,7 @@
 import styles from '@/styles/styles';
 
 interface BotonProps {
-  tipo: 'dividir' | 'agregar' | 'eliminar' | 'doble';
+  tipo: 'dividir' | 'agregar' | 'eliminar' | 'doble' | 'navegar';
   contenido: string;
   accion: () => void;
 }
